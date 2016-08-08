@@ -10,6 +10,15 @@ public class Economy {
 		this.db=db;
 		
 	}
+	public void subBalance(String playername,float change){
+		db.setBalance(playername, db.getBalance(playername)-change);
+	}
+	public void addBalance(String playername,float change){
+		db.setBalance(playername, db.getBalance(playername)+change);
+	}
+	public void setBalance(String playername,float money){
+		db.setBalance(playername, money);
+	}
 	public float getBalance(String playername){
 		return db.getBalance(playername);
 	}

@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.scheduler.BukkitRunnable;
@@ -72,7 +73,25 @@ public class DataBase {
 		}
 		return result;
 	}
+	public void setBalance(String playername,float money){
+		try {
+			st.execute("insert into "+table+"(playername,money) vaules('"+playername+"','"+money+"')");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	public Map<String,Float> getAllBalance(){
-		return null;
+		Map<String,Float> map=new HashMap<String,Float>();
+		ResultSet rs=null;
+		try {
+			rs=st.executeQuery("select * from "+table);
+			while(rs.next()){
+				map.put(rs.getString("playername"),rs.getFloat("money"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return map;
 	}
 }
