@@ -1,0 +1,12 @@
+#The url link to the MySQL.
+URL: jdbc:mysql://localhost:3306
+#If true,Plugin will create the save-area by itself.If false,the user should create MySQL's DataBase and Table.
+Auto_Create: false
+#MySQL's DataBase name
+DataBase: minecraft
+#MySQL's Table name
+Table: vault
+#MySQL's user
+User: root
+#MySQL's password(CAN'T BE NULL!)
+Password: root

@@ -1,0 +1,10 @@
+name: VaultPlugin
+main: com.tamenserver.vaultplugin.Main
+version: 1.0.0
+website: http://mc.tamenserver.com/bukkit_plugin/teleport_plugin
+author: tamenserver
+commands:
+  balance:
+    description: 查看指定玩家的金钱(不填为自己)
+    usage: /<command> [玩家名]
+    aliases: [money]
