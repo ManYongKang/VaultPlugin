@@ -1,9 +1,12 @@
 package com.tamenserver.vaultplugin.file;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -13,7 +16,17 @@ public class DataBase {
 	private Connection conn;
 	private Statement st;
 	private Main plugin;
-	public DataBase(Main main,final String database,String table,final String url,final String user,final String password){
+	private String url;
+	private String user;
+	private String password;
+	private String database;
+	private String table;
+	public DataBase(Main main,String databasea,String tablea,String urla,String usera,String passworda){
+		this.url=urla;
+		this.user=usera;
+		this.password=passworda;
+		this.database=databasea;
+		this.table=tablea;
 		plugin=main;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -46,6 +59,20 @@ public class DataBase {
 		}
 	}
 	public float getBalance(String playername){
-		return 0.1F;
+		ResultSet rs=null;
+		float result=-1F;
+		try {
+			rs=st.executeQuery("select money from "+table+" where playername=binary '"+playername+"'");
+			boolean isexists=rs.next();
+			if(isexists){
+				result=rs.getFloat("money");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public Map<String,Float> getAllBalance(){
+		return null;
 	}
 }

@@ -5,7 +5,7 @@ Auto_Create: false
 #MySQL's DataBase name
 DataBase: minecraft
 #MySQL's Table name
-Table: vault
+Table: Vault
 #MySQL's user
 User: root
 #MySQL's password(CAN'T BE NULL!)
