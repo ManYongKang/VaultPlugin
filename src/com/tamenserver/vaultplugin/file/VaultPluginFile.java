@@ -1,3 +1,6 @@
+package com.tamenserver.vaultplugin.file;
+
+
 import java.io.*;
 import java.util.*;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,9 +19,9 @@ public class VaultPluginFile {
         if(!database.exists()){
             plugin.saveResource("DataBase.yml",false);
         }
-        databaseyaml=YamlConfiguration.loadYamlConfiguration(database);
-        Map<String,Object> map=database.getConfigurationSection("").getValues(false);
-        while(String key:map.keySet()){
+        databaseyaml=YamlConfiguration.loadConfiguration(database);
+        Map<String,Object> map=databaseyaml.getConfigurationSection("").getValues(false);
+        for(String key:map.keySet()){
             String value=map.get(key).toString();
             config.put(key,value);
         }
