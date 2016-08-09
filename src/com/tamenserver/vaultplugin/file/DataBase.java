@@ -65,7 +65,7 @@ public class DataBase {
 		ResultSet rs=null;
 		float result=-1F;
 		try {
-			rs=st.executeQuery("select money from "+table+" where playername=binary '"+playername+"'");
+			rs=st.executeQuery("select money from "+table+" where playername=binary '"+playername+"';");
 			boolean isexists=rs.next();
 			if(isexists){
 				result=rs.getFloat("money");
@@ -77,7 +77,7 @@ public class DataBase {
 	}
 	public void setBalance(String playername,float money){
 		try {
-			st.execute("insert into "+table+"(playername,money) vaules('"+playername+"','"+money+"')");
+			st.execute("insert into "+table+"(playername,money) vaules('"+playername+"','"+money+"');");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -86,7 +86,7 @@ public class DataBase {
 		Map<String,Float> map=new HashMap<String,Float>();
 		ResultSet rs=null;
 		try {
-			rs=st.executeQuery("select * from "+table);
+			rs=st.executeQuery("select * from "+table+";");
 			while(rs.next()){
 				map.put(rs.getString("playername"),rs.getFloat("money"));
 			}
