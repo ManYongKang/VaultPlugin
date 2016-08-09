@@ -12,17 +12,19 @@ public class Commandbalance extends VaultPluginCommand{
 		if(args.length==0){
 			if(sender instanceof Player){
 				sender.sendMessage("Your balance:"+db.getBalance(sender.getName()));
+				return true;
 			}else{
 				sender.sendMessage("Only the online player can use this command like this!Please use /<balance> [playername]");
 				return true;
 			}
 		}else if(args.length==1){
 			float result=db.getBalance(args[0]);
-			if(result!=-1F){
+			if(result==-1F){
 				sender.sendMessage("The player is not exists!Please check your command.");
 				return true;
 			}else{
 				sender.sendMessage(args[0]+"'s balance:"+result);
+				return true;
 			}
 		}
 		sender.sendMessage("Args wrong!");

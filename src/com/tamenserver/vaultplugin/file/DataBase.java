@@ -85,7 +85,7 @@ public class DataBase {
 	}
 	public void addBalance(String playername,float money){
 		try {
-			st.execute("insert into "+table+" vaules('"+playername+"',"+money+");");
+			st.execute("insert into "+table+" values('"+playername+"',"+money+");");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
