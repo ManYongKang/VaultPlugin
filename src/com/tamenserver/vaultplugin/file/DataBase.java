@@ -57,6 +57,8 @@ public class DataBase {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
+			plugin.disable();
+			return;
 		}
 	}
 	public float getBalance(String playername){

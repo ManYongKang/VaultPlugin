@@ -1,5 +1,6 @@
 package com.tamenserver.vaultplugin;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +21,14 @@ public class Main extends JavaPlugin{
 		VaultPluginCommand.setDataBase(db);
 		this.getCommand("balance").setExecutor(new Commandbalance());
 		this.getServer().getPluginManager().registerEvents(new VaultPluginListener(db), this);
+		OfflinePlayer[] players=this.getServer().getOfflinePlayers();
+		for(OfflinePlayer p:players){
+			String name=p.getName();
+			float result=db.getBalance(name);
+			if(result==-1F){
+				db.setBalance(name, 0F);
+			}
+		}
 		getLogger().info("Vault plugin is enabled!");
 	}
 	@Override

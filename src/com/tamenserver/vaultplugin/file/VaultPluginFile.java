@@ -15,6 +15,9 @@ public class VaultPluginFile {
     public VaultPluginFile(Main main){
         plugin=main;
         folder=plugin.getDataFolder();
+        if(!folder.exists()){
+        	folder.mkdirs();
+        }
         database=new File(folder,"DataBase.yml");
         if(!database.exists()){
             plugin.saveResource("DataBase.yml",false);
