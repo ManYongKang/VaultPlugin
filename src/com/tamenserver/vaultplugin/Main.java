@@ -26,7 +26,7 @@ public class Main extends JavaPlugin{
 			String name=p.getName();
 			float result=db.getBalance(name);
 			if(result==-1F){
-				db.setBalance(name, 0F);
+				db.addBalance(name, 0F);
 			}
 		}
 		getLogger().info("Vault plugin is enabled!");

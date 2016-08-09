@@ -77,7 +77,16 @@ public class DataBase {
 	}
 	public void setBalance(String playername,float money){
 		try {
-			st.execute("insert into "+table+"(playername,money) vaules('"+playername+"','"+money+"');");
+			st.execute("update "+table+" set money="+money+" while playername='"+playername+"';");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void addBalance(String playername,float money){
+		try {
+			st.execute("insert into "+table+" vaules('"+playername+"',"+money+");");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
