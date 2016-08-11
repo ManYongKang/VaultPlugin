@@ -77,7 +77,7 @@ public class DataBase {
 	}
 	public void setBalance(String playername,float money){
 		try {
-			st.execute("update "+table+" set money="+money+" while playername='"+playername+"';");
+			st.execute("update "+table+" set money="+money+" where playername='"+playername+"';");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
